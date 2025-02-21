@@ -2,7 +2,9 @@ package de.neuefische.java.nfjavaonlde270125spring;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
@@ -12,6 +14,7 @@ import java.util.UUID;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final IdService idService;
 
     public List<Product> findAll() {
         return productRepository.findAll();
@@ -23,7 +26,7 @@ public class ProductService {
     }
 
     public Product save(Product product) {
-        String uuid = UUID.randomUUID().toString();
+        String uuid = idService.randomId();
         Product productToSave = product.withId(uuid);
 
         return productRepository.save(productToSave);
