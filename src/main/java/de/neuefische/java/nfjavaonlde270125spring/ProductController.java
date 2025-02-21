@@ -3,6 +3,7 @@ package de.neuefische.java.nfjavaonlde270125spring;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -10,30 +11,41 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductController {
 
-    private final ProductRepository productRepository;
+    private final ProductService productService;
 
 //    public ProductController(ProductRepository productRepository) {
 //        this.productRepository = productRepository;
 //    }
 
     @GetMapping
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
+    public List<ResponseProductDto> getAllProducts() {
+        return productService.findAll().stream()
+                .map(product -> new ResponseProductDto(product.id(), product.name(), product.price()))
+                .toList();
+
+//        List<ResponseProductDto> responseProductDtos = new ArrayList<>();
+//        for (Product product : productService.findAll()) {
+//            ResponseProductDto dto = new ResponseProductDto(product.id(), product.name(), product.price());
+//            responseProductDtos.add(dto);
+//        }
+//
+//        return responseProductDtos;
     }
 
     @GetMapping("{id}")
-    public Product getProductById(@PathVariable String id) {
-        return productRepository.findById(id)
-                .orElseThrow();
+    public ResponseProductDto getProductById(@PathVariable String id) {
+        Product product = productService.findById(id);
+        return new ResponseProductDto(product.id(), product.name(), product.price());
     }
 
     @PostMapping
-    public Product addProduct(@RequestBody Product product) {
-        return productRepository.save(product);
+    public ResponseProductDto addProduct(@RequestBody NewProductDto product) {
+        Product savedProduct = productService.save(new Product(null, product.name(), product.price(), product.buyPrice()));
+        return new ResponseProductDto(savedProduct.id(), savedProduct.name(), savedProduct.price());
     }
 
     @DeleteMapping("{id}")
     public void removeProduct(@PathVariable String id) {
-        productRepository.deleteById(id);
+        productService.deleteById(id);
     }
 }
