@@ -22,6 +22,7 @@ public class ProductController {
 
     @GetMapping
     public List<ResponseProductDto> getAllProducts() {
+        System.out.println("GET ALL PRODUCTS");
         return productService.findAll().stream()
                 .map(product -> new ResponseProductDto(product.id(), product.name(), product.price()))
                 .toList();
