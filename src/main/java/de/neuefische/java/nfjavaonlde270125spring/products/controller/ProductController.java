@@ -1,9 +1,12 @@
-package de.neuefische.java.nfjavaonlde270125spring;
+package de.neuefische.java.nfjavaonlde270125spring.products.controller;
 
+import de.neuefische.java.nfjavaonlde270125spring.products.dto.NewProductDto;
+import de.neuefische.java.nfjavaonlde270125spring.products.model.Product;
+import de.neuefische.java.nfjavaonlde270125spring.products.service.ProductService;
+import de.neuefische.java.nfjavaonlde270125spring.products.dto.ResponseProductDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

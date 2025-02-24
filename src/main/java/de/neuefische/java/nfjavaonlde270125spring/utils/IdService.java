@@ -1,4 +1,4 @@
-package de.neuefische.java.nfjavaonlde270125spring;
+package de.neuefische.java.nfjavaonlde270125spring.utils;
 
 import org.springframework.stereotype.Service;
 

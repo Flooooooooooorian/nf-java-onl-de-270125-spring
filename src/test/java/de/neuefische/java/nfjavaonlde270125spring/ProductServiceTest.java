@@ -1,5 +1,9 @@
 package de.neuefische.java.nfjavaonlde270125spring;
 
+import de.neuefische.java.nfjavaonlde270125spring.products.model.Product;
+import de.neuefische.java.nfjavaonlde270125spring.products.repository.ProductRepository;
+import de.neuefische.java.nfjavaonlde270125spring.products.service.ProductService;
+import de.neuefische.java.nfjavaonlde270125spring.utils.IdService;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

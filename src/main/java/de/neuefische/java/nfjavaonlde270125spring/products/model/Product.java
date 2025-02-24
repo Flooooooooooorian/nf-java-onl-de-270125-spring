@@ -1,4 +1,4 @@
-package de.neuefische.java.nfjavaonlde270125spring;
+package de.neuefische.java.nfjavaonlde270125spring.products.model;
 
 import lombok.With;
 import org.springframework.data.annotation.Id;

@@ -1,13 +1,13 @@
-package de.neuefische.java.nfjavaonlde270125spring;
+package de.neuefische.java.nfjavaonlde270125spring.products.service;
 
+import de.neuefische.java.nfjavaonlde270125spring.products.model.Product;
+import de.neuefische.java.nfjavaonlde270125spring.products.repository.ProductRepository;
+import de.neuefische.java.nfjavaonlde270125spring.utils.IdService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
