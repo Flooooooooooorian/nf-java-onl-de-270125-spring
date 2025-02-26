@@ -27,7 +27,7 @@ public class ProductService {
         return productRepository.findById(id)
                 .orElseThrow(() -> {
                     log.error("No Product found with id " + id);
-                    throw new NoSuchProductException("No Product found with id " + id);
+                    return new NoSuchProductException("No Product found with id " + id);
                 });
     }
 

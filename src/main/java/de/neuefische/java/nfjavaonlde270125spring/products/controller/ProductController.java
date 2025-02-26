@@ -1,18 +1,13 @@
 package de.neuefische.java.nfjavaonlde270125spring.products.controller;
 
-import de.neuefische.java.nfjavaonlde270125spring.products.dto.CustomErrorMessage;
 import de.neuefische.java.nfjavaonlde270125spring.products.dto.NewProductDto;
-import de.neuefische.java.nfjavaonlde270125spring.products.exception.NoSuchProductException;
+import de.neuefische.java.nfjavaonlde270125spring.products.dto.ResponseProductDto;
 import de.neuefische.java.nfjavaonlde270125spring.products.model.Product;
 import de.neuefische.java.nfjavaonlde270125spring.products.service.ProductService;
-import de.neuefische.java.nfjavaonlde270125spring.products.dto.ResponseProductDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/products")
