@@ -1,9 +1,11 @@
 package de.neuefische.java.nfjavaonlde270125spring.products.service;
 
+import de.neuefische.java.nfjavaonlde270125spring.products.exception.NoSuchProductException;
 import de.neuefische.java.nfjavaonlde270125spring.products.model.Product;
 import de.neuefische.java.nfjavaonlde270125spring.products.repository.ProductRepository;
 import de.neuefische.java.nfjavaonlde270125spring.utils.IdService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.NoSuchElementException;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class ProductService {
 
     private final ProductRepository productRepository;
@@ -22,7 +25,10 @@ public class ProductService {
 
     public Product findById(String id) {
         return productRepository.findById(id)
-                .orElseThrow();
+                .orElseThrow(() -> {
+                    log.error("No Product found with id " + id);
+                    throw new NoSuchProductException("No Product found with id " + id);
+                });
     }
 
     public Product save(Product product) {
